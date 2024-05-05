@@ -13,6 +13,7 @@ import ShopPage from "./pages/Shop.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import RegisterPage from "./pages/Register.jsx";
 import Recover from "./pages/Recover.jsx";
+import CartPage from "./pages/Cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />
       },
       {
         path: "/recover",
