@@ -1,11 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 
 export const About = () => {
   return (
     <section>
-      <Navbar />
       <div className="container-fluid page-header py-5">
         <h1 className="text-center text-white display-6">About Us</h1>
       </div>
@@ -220,7 +217,6 @@ export const About = () => {
         </div>
       </div> */}
       {/* <!-- Tastimonial End --> */}
-      <Footer />
     </section>
   );
 };

@@ -1,10 +1,6 @@
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-
 export const Contact = () => {
   return (
     <section>
-      <Navbar />
       <div className="container-fluid page-header py-5">
         <h1 className="text-center text-white display-6">Contact</h1>
       </div>
@@ -93,7 +89,6 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

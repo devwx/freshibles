@@ -59,7 +59,7 @@ function Navbar() {
               <a href="cart" className="position-relative me-4 my-auto">
                 <i className="fa fa-shopping-cart fa-2x"></i>
               </a>
-              <a href="register" className="my-auto">
+              <a href="/register" className="my-auto">
                 <i className="fas fa-user fa-2x"></i>
               </a>
             </div>

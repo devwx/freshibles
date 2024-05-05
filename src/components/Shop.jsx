@@ -1,6 +1,3 @@
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-
 import FRUIT_IMG1 from "../assets/images/fruite-item-1.jpg";
 import FRUIT_IMG2 from "../assets/images/fruite-item-2.jpg";
 import FRUIT_IMG3 from "../assets/images/fruite-item-3.jpg";
@@ -122,7 +119,6 @@ export const Shop = () => {
 
   return (
     <section>
-      <Navbar />
       <div className="container-fluid page-header py-5">
         <h1 className="text-center text-white display-6">Shop</h1>
       </div>
@@ -287,7 +283,6 @@ export const Shop = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

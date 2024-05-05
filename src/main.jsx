@@ -10,27 +10,39 @@ import AboutUs from "./pages/AboutUs.jsx";
 import ServicePage from "./pages/Services.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import ShopPage from "./pages/Shop.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import RegisterPage from "./pages/Register.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/about-us",
-    element: <AboutUs />,
-  },
-  {
-    path: "/shop",
-    element: <ShopPage />,
-  },
-  {
-    path: "/services",
-    element: <ServicePage />,
-  },
-  {
-    path: "/contact-us",
-    element: <ContactUs />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
+      {
+        path: "/services",
+        element: <ServicePage />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+    ],
   },
 ]);
 

@@ -11,6 +11,7 @@ import Vegetables from "./components/Vegetables";
 import Bestseller from "./components/Bestseller";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import { Outlet } from "react-router-dom";
 
 function App() {
   useEffect(() => {
@@ -81,10 +82,7 @@ function App() {
   return (
     <section>
       <Navbar />
-      <Hero />
-      <Features />
-      <Product />
-      <Bestseller />
+      <Outlet />
       <Footer />
       <BackToTop />
     </section>

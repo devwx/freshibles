@@ -1,13 +1,10 @@
 import FEATURE_IMG1 from "../assets/images/featur-1.jpg";
 import FEATURE_IMG2 from "../assets/images/featur-2.jpg";
 import FEATURE_IMG3 from "../assets/images/featur-3.jpg";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 
 export const Services = () => {
   return (
     <section>
-      <Navbar />
       <div className="container-fluid page-header py-5">
         <h1 className="text-center text-white display-6">Services</h1>
       </div>
@@ -173,7 +170,6 @@ export const Services = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };
