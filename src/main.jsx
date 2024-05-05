@@ -12,6 +12,7 @@ import ContactUs from "./pages/ContactUs.jsx";
 import ShopPage from "./pages/Shop.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import RegisterPage from "./pages/Register.jsx";
+import Recover from "./pages/Recover.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/recover",
+        element: <Recover />,
       },
     ],
   },

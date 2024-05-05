@@ -101,7 +101,7 @@ const RegisterPage = () => {
                     {" "}
                     Already registerd?
                     <a
-                      href="register.html"
+                      href="/register"
                       className="position-relative me-4 my-auto"
                     >
                       Login.
@@ -183,7 +183,7 @@ const RegisterPage = () => {
                 <div className="col-lg-8">
                   Forgot Password?{" "}
                   <a
-                    href="recover.html"
+                    href="/recover"
                     className="position-relative me-4 my-auto"
                   >
                     <i className="fas fa-envelope fa-2x"></i> Recover.
