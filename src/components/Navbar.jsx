@@ -23,7 +23,7 @@ function Navbar() {
       </div>
       <div className="container px-0">
         <nav className="navbar navbar-light bg-white navbar-expand-xl">
-          <a href="index.html" className="navbar-brand">
+          <a href="/" className="navbar-brand">
             <h1 className="text-primary display-6">Freshibles</h1>
           </a>
           <button
@@ -42,24 +42,24 @@ function Navbar() {
               <a href="/" className="nav-item nav-link active">
                 Home
               </a>
-              <a href="about.html" className="nav-item nav-link">
+              <a href="/about-us" className="nav-item nav-link">
                 About Us
               </a>
-              <a href="shop.html" className="nav-item nav-link">
+              <a href="/shop" className="nav-item nav-link">
                 Shop
               </a>
-              <a href="services.html" className="nav-item nav-link">
+              <a href="/services" className="nav-item nav-link">
                 Services
               </a>
-              <a href="contact.html" className="nav-item nav-link">
+              <a href="/contact-us" className="nav-item nav-link">
                 Contact Us
               </a>
             </div>
             <div className="d-flex m-3 me-0">
-              <a href="cart.html" className="position-relative me-4 my-auto">
+              <a href="cart" className="position-relative me-4 my-auto">
                 <i className="fa fa-shopping-cart fa-2x"></i>
               </a>
-              <a href="register.html" className="my-auto">
+              <a href="register" className="my-auto">
                 <i className="fas fa-user fa-2x"></i>
               </a>
             </div>

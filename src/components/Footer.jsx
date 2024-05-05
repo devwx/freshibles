@@ -8,7 +8,7 @@ const Footer = () => {
         >
           <div className="row g-4">
             <div className="col-lg-3">
-              <a href="index.html">
+              <a href="/">
                 <h1 className="text-primary mb-0">Freshibles</h1>
                 <p className="text-secondary mb-0">Fresh products</p>
               </a>
@@ -78,7 +78,7 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6">
             <div className="d-flex flex-column text-start footer-item">
               <h4 className="text-light mb-3">Shop Info</h4>
-              <a className="btn-link" href="index.html">
+              <a className="btn-link" href="/">
                 Home
               </a>
               <a className="btn-link" href="about.html">
