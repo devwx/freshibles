@@ -1,10 +1,19 @@
 import { useParams } from "react-router-dom";
 import useFetchProducts from "../hooks/useFetchProduct";
+import useAddToCart from "../hooks/useAddToCart";
 
 const ProductDetail = () => {
   const { products } = useFetchProducts();
   const { productId } = useParams();
   const product = products.find(e => e._id === productId);
+
+  console.log(products);
+
+  const { isLoading, addToCart } = useAddToCart();
+
+  const handleAddToCart = itemId => {
+    addToCart(itemId);
+  };
 
   return (
     <section>
@@ -28,8 +37,13 @@ const ProductDetail = () => {
               <p className="mb-4">{product?.description}</p>
 
               <div className="d-flex gap-3 mb-4">
-                <button className="btn btn-primary" type="button">
-                  Add to Cart
+                <button
+                  disabled={isLoading}
+                  className="btn border border-secondary rounded-pill px-3 text-primary"
+                  onClick={() => handleAddToCart(product._id)}
+                >
+                  <i className="fa fa-shopping-bag me-2 text-primary"></i>{" "}
+                  {isLoading ? "Loading..." : "Add to cart"}
                 </button>
               </div>
             </div>
