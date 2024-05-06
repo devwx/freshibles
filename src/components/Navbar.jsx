@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import useCartItems from "../hooks/useFetchCartItems";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function Navbar() {
   const { cartItems } = useCartItems();
@@ -107,25 +108,37 @@ function Navbar() {
               </div>
               <div>
                 {user ? (
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem("auth-token");
-                      localStorage.removeItem("user-data");
-                      window.location.replace("/");
-                    }}
-                    className="btn btn-danger my-auto"
-                  >
-                    Logout
-                  </button>
+                  ""
                 ) : (
                   <a href="/register" className="my-auto">
                     <i className="fas fa-user fa-2x"></i>
                   </a>
                 )}
               </div>
-              <div className="ml-5">
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  {user && `👋 Welcome, ${user?.user.name}`}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item className="capitalize" href="">{user?.user.name}</Dropdown.Item>
+                  <Dropdown.Item href="">
+                    <button
+                      onClick={() => {
+                        localStorage.removeItem("auth-token");
+                        localStorage.removeItem("user-data");
+                        window.location.replace("/");
+                      }}
+                      className="btn btn-danger my-auto"
+                    >
+                      Logout
+                    </button>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              {/* <div className="ml-5">
                 {user && `👋 Welcome, ${user?.user.name}`}
-              </div>
+              </div> */}
             </div>
           </div>
         </nav>

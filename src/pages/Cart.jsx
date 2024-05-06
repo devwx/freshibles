@@ -161,12 +161,15 @@ const CartPage = () => {
 
   if (loading) {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col d-flex justify-content-center">
-            <div>Loading...</div>
-          </div>
-        </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        Loading...
       </div>
     );
   }
@@ -246,7 +249,8 @@ const CartPage = () => {
                       </td>
                       <td>
                         <p className="mb-0 mt-4">
-                          ${parseInt(item.new_price * item.quantity)?.toFixed(2)}
+                          $
+                          {parseInt(item.new_price * item.quantity)?.toFixed(2)}
                         </p>
                       </td>
                       <td>
@@ -290,7 +294,9 @@ const CartPage = () => {
                   </h1>
                   <div className="d-flex justify-content-between mb-4">
                     <h5 className="mb-0 me-4">Subtotal:</h5>
-                    <p className="mb-0">${cartItems.totalPrice?.toFixed(2) || 0}</p>
+                    <p className="mb-0">
+                      ${cartItems.totalPrice?.toFixed(2) || 0}
+                    </p>
                   </div>
                   <div className="d-flex justify-content-between">
                     <h5 className="mb-0 me-4">Shipping</h5>

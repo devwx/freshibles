@@ -16,6 +16,8 @@ import Recover from "./pages/Recover.jsx";
 import CartPage from "./pages/Cart.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import ProductDetail from "./pages/ProductDetail.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "/recover",
         element: <Recover />,
+      },
+      {
+        path: "/product/:productId",
+        element: <ProductDetail />,
+      },
+      {
+        path: "/reset-password/:token",
+        element: <ResetPassword />,
       },
     ],
   },

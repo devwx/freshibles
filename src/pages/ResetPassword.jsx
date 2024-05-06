@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form";
-import HERO_IMG from "../assets/images/hero-img-2.jpg";
 import { useState } from "react";
+
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const BASEURL = import.meta.env.VITE_BASE_URL;
 
-const Recover = () => {
+const ResetPassword = () => {
+  const { token } = useParams();
   const [isLoading, setisLoading] = useState(false);
   const {
     register,
@@ -13,11 +15,17 @@ const Recover = () => {
     formState: { errors },
   } = useForm();
 
-  const handlePasswordReset = async data => {
+  const handleClick = async data => {
     setisLoading(true);
+
+    if (data.password !== data.confirmPassword) {
+      toast.error("Password do not match");
+      return;
+    }
+
     try {
-      const action = await fetch(`${BASEURL}/api/forgot-password`, {
-        method: "POST",
+      const action = await fetch(`${BASEURL}/api/reset-password/${token}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -27,31 +35,32 @@ const Recover = () => {
       const response = await action.json();
 
       if (action.ok) {
-        toast.success(response.message + " Check your Mail");
+        toast.success(response.message);
+        localStorage.removeItem("auth-token");
         setisLoading(false);
-
         setTimeout(() => {
-          window.location.replace("/reset-password");
+          window.location.replace("/register");
         }, 5000);
       } else {
         toast.error(response.message);
-        setisLoading(false);
       }
     } catch (error) {
       toast.error("Something went wrong");
-      console.log(error);
       setisLoading(false);
     }
   };
 
   return (
-    <>
-      {/* Single Page Header */}
-      <div className="container-fluid page-header py-5">
-        <h1 className="text-center text-white display-6">Password Recovery</h1>
-      </div>
+    <section>
+      {/* MODAL END */}
 
-      {/* Sign Up Start */}
+      {/* <!-- Single Page Header start --> */}
+      <div className="container-fluid page-header py-5">
+        <h1 className="text-center text-white display-6">Reset password</h1>
+      </div>
+      {/* <!-- Single Page Header End --> */}
+
+      {/* FORM FIELDS */}
       <div className="container-fluid contact py-5">
         <div className="container py-5">
           <div className="p-5 bg-light rounded">
@@ -61,30 +70,47 @@ const Recover = () => {
                   className="text-center mx-auto"
                   style={{ maxWidth: "700px" }}
                 >
-                  <p className="mb-4">Forgot your Login. We got You.</p>
+                  <p className="mb-4">
+                    Welcome onboard. We promise you a very refreshing journer
+                    ahead.
+                  </p>
                 </div>
               </div>
               <div className="col-lg-7">
-                <form onSubmit={handleSubmit(handlePasswordReset)}>
-                  {errors.email && (
-                    <span className="text-danger">Email field is required</span>
+                <form onSubmit={handleSubmit(handleClick)}>
+                  {errors.password && (
+                    <span className="text-danger">
+                      Password field is required
+                    </span>
                   )}
                   <input
-                    type="email"
+                    type="password"
                     className="w-100 form-control border-0 py-3 mb-4"
-                    placeholder="Enter Your Email"
-                    {...register("email", { required: true })}
+                    placeholder="Enter Password"
+                    {...register("password", { required: true })}
                   />
+                  {errors.confirmPassword && (
+                    <span className="text-danger">
+                      Password field is required
+                    </span>
+                  )}
+                  <input
+                    type="password"
+                    className="w-100 form-control border-0 py-3 mb-4"
+                    placeholder="Confirm password"
+                    {...register("confirmPassword", { required: true })}
+                  />
+
                   <button
                     disabled={isLoading}
                     className="w-100 btn form-control border-secondary py-3 bg-white text-primary"
                     type="submit"
                   >
-                    Recover
+                    Reset
                   </button>
                 </form>
               </div>
-              <div className="col-lg-5">
+              {/* <div className="col-lg-5">
                 <div className="d-flex p-4 rounded mb-4 bg-white">
                   <img
                     src={HERO_IMG}
@@ -92,26 +118,13 @@ const Recover = () => {
                     alt="Second slide"
                   />
                 </div>
-              </div>
-            </div>
-            <div className="container py-5">
-              <div className="row g-4">
-                <div className="col-lg-12">
-                  <a
-                    href="/register"
-                    className="position-relative me-4 my-auto"
-                  >
-                    <i className="fas fa-user fa-2x"></i> Login Here.
-                  </a>
-                </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
-      {/* Sign Up End */}
-    </>
+    </section>
   );
 };
 
-export default Recover;
+export default ResetPassword;

@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import useAddToCart from "../hooks/useAddToCart";
 import useFetchProducts from "../hooks/useFetchProduct";
 
 const Product = () => {
   const { products } = useFetchProducts();
+  const navigate = useNavigate();
 
   const dairyProducts = products.filter(item => item.category === "dairy");
   const VegetableProducts = products.filter(
@@ -97,9 +99,12 @@ const Product = () => {
                         className="col-md-6 col-lg-4 col-xl-3"
                       >
                         <div className="rounded position-relative fruite-item">
-                          <div className="fruite-img">
+                          <div
+                            onClick={() => navigate(`/product/${item._id}`)}
+                            className="fruite-img"
+                          >
                             <img
-                            style={{height: "300px"}}
+                              style={{ height: "300px" }}
                               src={item.image}
                               className="img-fluid w-100 rounded-top"
                               alt=""
@@ -145,9 +150,12 @@ const Product = () => {
                         className="col-md-6 col-lg-4 col-xl-3"
                       >
                         <div className="rounded position-relative fruite-item">
-                          <div className="fruite-img">
+                          <div
+                            onClick={() => navigate(`/product/${item._id}`)}
+                            className="fruite-img"
+                          >
                             <img
-                            style={{height: "300px"}}
+                              style={{ height: "300px" }}
                               src={item.image}
                               className="img-fluid w-100 rounded-top"
                               alt=""
@@ -193,9 +201,12 @@ const Product = () => {
                         className="col-md-6 col-lg-4 col-xl-3"
                       >
                         <div className="rounded position-relative fruite-item">
-                          <div className="fruite-img">
+                          <div
+                            onClick={() => navigate(`/product/${item._id}`)}
+                            className="fruite-img"
+                          >
                             <img
-                            style={{height: "300px"}}
+                              style={{ height: "300px" }}
                               src={item.image}
                               className="img-fluid w-100 rounded-top"
                               alt=""
@@ -241,9 +252,12 @@ const Product = () => {
                         className="col-md-6 col-lg-4 col-xl-3"
                       >
                         <div className="rounded position-relative fruite-item">
-                          <div className="fruite-img">
+                          <div
+                            onClick={() => navigate(`/product/${item._id}`)}
+                            className="fruite-img"
+                          >
                             <img
-                            style={{height: "300px"}}
+                              style={{ height: "300px" }}
                               src={item.image}
                               className="img-fluid w-100 rounded-top"
                               alt=""
@@ -289,9 +303,12 @@ const Product = () => {
                         className="col-md-6 col-lg-4 col-xl-3"
                       >
                         <div className="rounded position-relative fruite-item">
-                          <div className="fruite-img">
+                          <div
+                            onClick={() => navigate(`/product/${item._id}`)}
+                            className="fruite-img"
+                          >
                             <img
-                            style={{height: "300px"}}
+                              style={{ height: "300px" }}
                               src={item.image}
                               className="img-fluid w-100 rounded-top"
                               alt=""

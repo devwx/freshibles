@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import useAddToCart from "../hooks/useAddToCart";
 import useFetchProducts from "../hooks/useFetchProduct";
 
 const Bestseller = () => {
   const { products } = useFetchProducts();
+   const navigate = useNavigate();
 
   const bestItems = products.slice(0, 6);
   const bestItem2 = products
@@ -31,9 +33,11 @@ const Bestseller = () => {
             <div key={item._id} className="col-lg-6 col-xl-4">
               <div className="p-4 rounded bg-light">
                 <div className="row align-items-center">
-                  <div className="col-6">
+                  <div
+                    onClick={() => navigate(`/product/${item._id}`)}
+                    className="col-6"
+                  >
                     <img
-                    
                       src={item.image}
                       className="img-fluid rounded-circle w-100"
                       alt=""
@@ -69,7 +73,11 @@ const Bestseller = () => {
             <div key={item._id} className="col-md-6 col-lg-6 col-xl-3">
               <div className="text-center">
                 <img
-                 src={item.image} className="img-fluid rounded" alt="" />
+                  onClick={() => navigate(`/product/${item._id}`)}
+                  src={item.image}
+                  className="img-fluid rounded"
+                  alt=""
+                />
                 <div className="py-4">
                   <a href="#" className="h5">
                     {item.name}
