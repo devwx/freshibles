@@ -15,6 +15,10 @@ const RegisterPage = () => {
   } = useForm();
 
   const handleSignup = async data => {
+    if (data.password !== data.confirmPassword) {
+      toast.error("Password do not match");
+      return;
+    }
     try {
       const response = await axios.post(`${BASEURL}/api/signup`, data);
       if (response.data.success) {
@@ -24,7 +28,8 @@ const RegisterPage = () => {
         }, 5000);
       }
     } catch (error) {
-      toast.error(error.response.statusText);
+      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 
