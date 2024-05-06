@@ -246,7 +246,7 @@ const CartPage = () => {
                       </td>
                       <td>
                         <p className="mb-0 mt-4">
-                          ${parseInt(item.new_price * item.quantity).toFixed(2)}
+                          ${parseInt(item.new_price * item.quantity)?.toFixed(2)}
                         </p>
                       </td>
                       <td>
@@ -290,7 +290,7 @@ const CartPage = () => {
                   </h1>
                   <div className="d-flex justify-content-between mb-4">
                     <h5 className="mb-0 me-4">Subtotal:</h5>
-                    <p className="mb-0">${cartItems.totalPrice.toFixed(2)}</p>
+                    <p className="mb-0">${cartItems.totalPrice?.toFixed(2) || 0}</p>
                   </div>
                   <div className="d-flex justify-content-between">
                     <h5 className="mb-0 me-4">Shipping</h5>
@@ -302,7 +302,7 @@ const CartPage = () => {
                 <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                   <h5 className="mb-0 ps-4 me-4">Total</h5>
                   <p className="mb-0 pe-4">
-                    ${cartItems.totalPrice.toFixed(2)}
+                    ${cartItems.totalPrice?.toFixed(2) || 0}
                   </p>
                 </div>
                 <button

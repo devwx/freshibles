@@ -94,15 +94,16 @@ function Navbar() {
             </div>
             <div className="d-flex m-3 me-0">
               <div style={{ position: "relative" }}>
-                <a href="cart" className="position-relative me-4 my-auto">
+                <a href="/cart" className="position-relative me-4 my-auto">
                   <i className="fa fa-shopping-cart fa-2x"></i>
                 </a>
-                <span
+                <a
+                  href="/cart"
                   className="bg-danger text-white px-1 rounded-circle"
                   style={{ position: "absolute", left: "20px", top: "-5px" }}
                 >
                   {cartItems?.cartItems?.length || 0}
-                </span>
+                </a>
               </div>
               <div>
                 {user ? (
