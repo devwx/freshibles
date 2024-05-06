@@ -115,27 +115,31 @@ function Navbar() {
                   </a>
                 )}
               </div>
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  {user && `👋 Welcome, ${user?.user.name}`}
-                </Dropdown.Toggle>
+              {user && (
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    {user && `👋 Welcome, ${user?.user.name}`}
+                  </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item className="capitalize" href="">{user?.user.name}</Dropdown.Item>
-                  <Dropdown.Item href="">
-                    <button
-                      onClick={() => {
-                        localStorage.removeItem("auth-token");
-                        localStorage.removeItem("user-data");
-                        window.location.replace("/");
-                      }}
-                      className="btn btn-danger my-auto"
-                    >
-                      Logout
-                    </button>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  <Dropdown.Menu>
+                    <Dropdown.Item className="capitalize" href="">
+                      {user?.user.name}
+                    </Dropdown.Item>
+                    <Dropdown.Item href="">
+                      <button
+                        onClick={() => {
+                          localStorage.removeItem("auth-token");
+                          localStorage.removeItem("user-data");
+                          window.location.replace("/");
+                        }}
+                        className="btn btn-danger my-auto"
+                      >
+                        Logout
+                      </button>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              )}
               {/* <div className="ml-5">
                 {user && `👋 Welcome, ${user?.user.name}`}
               </div> */}
