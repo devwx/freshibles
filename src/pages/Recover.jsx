@@ -31,7 +31,7 @@ const Recover = () => {
         setisLoading(false);
 
         setTimeout(() => {
-          window.location.replace("/reset-password");
+          window.location.replace("/register");
         }, 5000);
       } else {
         toast.error(response.message);

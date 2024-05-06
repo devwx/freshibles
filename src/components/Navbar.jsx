@@ -8,8 +8,6 @@ function Navbar() {
   const location = useLocation();
   const pathname = location.pathname;
 
-  console.log(pathname);
-
   const user = JSON.parse(localStorage.getItem("user-data"));
 
   return (
