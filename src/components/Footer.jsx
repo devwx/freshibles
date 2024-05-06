@@ -1,3 +1,5 @@
+import payment from "../assets/images/payment.png"
+
 const Footer = () => {
   return (
     <div className="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -14,7 +16,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="col-lg-6">
-              <div className="position-relative mx-auto">
+              {/* <div className="position-relative mx-auto">
                 <input
                   className="form-control border-0 w-100 py-3 px-4 rounded-pill"
                   type="number"
@@ -27,7 +29,7 @@ const Footer = () => {
                 >
                   Subscribe Now
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="col-lg-3">
               <div className="d-flex justify-content-end pt-3">
@@ -68,7 +70,7 @@ const Footer = () => {
                 industry standard and we have a proven track record.
               </p>
               <a
-                href="about.html"
+                href="/about-us"
                 className="btn border-secondary py-2 px-4 rounded-pill text-primary"
               >
                 Read More
@@ -81,16 +83,16 @@ const Footer = () => {
               <a className="btn-link" href="/">
                 Home
               </a>
-              <a className="btn-link" href="about.html">
+              <a className="btn-link" href="/about-us">
                 About Us
               </a>
-              <a className="btn-link" href="shop.html">
+              <a className="btn-link" href="/shop">
                 Shop
               </a>
-              <a className="btn-link" href="services.html">
+              <a className="btn-link" href="/services">
                 Services
               </a>
-              <a className="btn-link" href="contact.html">
+              <a className="btn-link" href="/contact-us">
                 Contact Us
               </a>
             </div>
@@ -98,21 +100,21 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6">
             <div className="d-flex flex-column text-start footer-item">
               <h4 className="text-light mb-3">Account</h4>
-              <a className="btn-link" href="/register">
+              {/* <a className="btn-link" href="/register">
                 My Account
-              </a>
-              <a className="btn-link" href="shop.html">
+              </a> */}
+              <a className="btn-link" href="/shop">
                 Shop details
               </a>
-              <a className="btn-link" href="cart.html">
+              <a className="btn-link" href="/cart">
                 Shopping Cart
               </a>
-              <a className="btn-link" href="">
+              {/* <a className="btn-link" href="">
                 Wishlist
-              </a>
-              <a className="btn-link" href="">
+              </a> */}
+              {/* <a className="btn-link" href="">
                 Order History
-              </a>
+              </a> */}
             </div>
           </div>
           <div className="col-lg-3 col-md-6">
@@ -122,7 +124,7 @@ const Footer = () => {
               <p>Email: info@freshibles.co.uk</p>
               <p>Phone: +0123 4567 8910</p>
               <p>Payment Accepted</p>
-              <img src="img/payment.png" className="img-fluid" alt="" />
+              <img src={payment} className="img-fluid" alt="" />
             </div>
           </div>
         </div>

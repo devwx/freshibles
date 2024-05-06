@@ -1,19 +1,44 @@
 /* eslint-disable no-unused-vars */
+const BASEURL = import.meta.env.VITE_BASE_URL;
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import $ from "jquery"; // Import jQuery
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import Product from "./components/Product";
-import Vegetables from "./components/Vegetables";
-import Bestseller from "./components/Bestseller";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import { Outlet } from "react-router-dom";
+import { Notification } from "./components/Notification";
+import useFetchProducts from "./hooks/useFetchProduct";
 
 function App() {
+  const { loading } = useFetchProducts();
+
+  const fetchUser = useCallback(async () => {
+    const authToken = localStorage.getItem("auth-token");
+    try {
+      const response = await fetch(`${BASEURL}/api/me`, {
+        headers: {
+          Accept: "application/json",
+          "auth-token": authToken,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("user-data", JSON.stringify(data));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
   useEffect(() => {
     // Spinner
     const spinner = setTimeout(() => {
@@ -79,12 +104,26 @@ function App() {
     });
   }, [videoSrc]); // Run when videoSrc changes
 
+  if (loading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col d-flex justify-content-center">
+            <div>Loading...</div>
+          </div>
+        </div>
+      </div>
+    );
+
+  }
+
   return (
     <section>
       <Navbar />
       <Outlet />
       <Footer />
       <BackToTop />
+      <Notification />
     </section>
   );
 }

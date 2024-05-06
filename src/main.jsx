@@ -14,6 +14,8 @@ import HomePage from "./pages/HomePage.jsx";
 import RegisterPage from "./pages/Register.jsx";
 import Recover from "./pages/Recover.jsx";
 import CartPage from "./pages/Cart.jsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <CartPage />
+        element: <CartPage />,
       },
       {
         path: "/recover",
@@ -58,6 +60,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

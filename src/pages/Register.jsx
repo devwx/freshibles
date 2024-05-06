@@ -1,11 +1,33 @@
-import HERO_IMG from "../assets/images/hero-img-2.jpg"
+import HERO_IMG from "../assets/images/hero-img-2.jpg";
 import IMG from "../assets/images/best-product-5.jpg";
+import { useForm } from "react-hook-form";
+import Login from "./Login";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+const BASEURL = import.meta.env.VITE_BASE_URL;
 
 const RegisterPage = () => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    // Handle form submission logic here
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleSignup = async data => {
+    try {
+      const response = await axios.post(`${BASEURL}/api/signup`, data);
+      if (response.data.success) {
+        toast.success("Account created successfully");
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000);
+      }
+    } catch (error) {
+      toast.error(error.response.statusText);
+    }
   };
+
   return (
     <section>
       {/* MODAL */}
@@ -36,7 +58,7 @@ const RegisterPage = () => {
                         className="text-center mx-auto"
                         style={{ maxWidth: "700px" }}
                       >
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                       </div>
                       <br />
                       <div
@@ -49,31 +71,61 @@ const RegisterPage = () => {
                       </div>
                     </div>
                     <div className="col-lg-7">
-                      <form action="" className="">
+                      <form onSubmit={handleSubmit(handleSignup)}>
+                        {errors.name && (
+                          <span className="text-danger">
+                            Name field is required
+                          </span>
+                        )}
                         <input
                           type="text"
                           className="w-100 form-control border-0 py-3 mb-4"
                           placeholder="Your Name"
+                          {...register("name", { required: true })}
                         />
+                        {errors.email && (
+                          <span className="text-danger">
+                            Email field is required
+                          </span>
+                        )}
                         <input
                           type="email"
                           className="w-100 form-control border-0 py-3 mb-4"
                           placeholder="Enter Your Email"
+                          {...register("email", { required: true })}
                         />
+                        {errors.mobileNumber && (
+                          <span className="text-danger">
+                            Mobile number field is required
+                          </span>
+                        )}
                         <input
                           type="number"
                           className="w-100 form-control border-0 py-3 mb-4"
                           placeholder="Phone Number"
+                          {...register("mobileNumber", { required: true })}
                         />
+                        {errors.password && (
+                          <span className="text-danger">
+                            Password field is required
+                          </span>
+                        )}
                         <input
                           type="password"
                           className="w-100 form-control border-0 py-3 mb-4"
                           placeholder="Enter Password"
+                          {...register("password", { required: true })}
                         />
+                        {errors.confirmPassword && (
+                          <span className="text-danger">
+                            Comfirm password field is required
+                          </span>
+                        )}
                         <input
                           type="password"
                           className="w-100 form-control border-0 py-3 mb-4"
                           placeholder="Confirm Password"
+                          {...register("confirmPassword", { required: true })}
                         />
 
                         <button
@@ -139,24 +191,7 @@ const RegisterPage = () => {
                 </div>
               </div>
               <div className="col-lg-7">
-                <form onSubmit={handleSubmit}>
-                  <input
-                    type="email"
-                    className="w-100 form-control border-0 py-3 mb-4"
-                    placeholder="Enter Your Email"
-                  />
-                  <input
-                    type="password"
-                    className="w-100 form-control border-0 py-3 mb-4"
-                    placeholder="Enter Password"
-                  />
-                  <button
-                    className="w-100 btn form-control border-secondary py-3 bg-white text-primary"
-                    type="submit"
-                  >
-                    Login
-                  </button>
-                </form>
+                <Login />
               </div>
               <div className="col-lg-5">
                 <div className="d-flex p-4 rounded mb-4 bg-white">
@@ -182,10 +217,7 @@ const RegisterPage = () => {
                 </div>
                 <div className="col-lg-8">
                   Forgot Password?{" "}
-                  <a
-                    href="/recover"
-                    className="position-relative me-4 my-auto"
-                  >
+                  <a href="/recover" className="position-relative me-4 my-auto">
                     <i className="fas fa-envelope fa-2x"></i> Recover.
                   </a>
                 </div>

@@ -1,8 +1,6 @@
 import VEGETABLE_IMG1 from "../assets/images/vegetable-item-1.jpg";
 import VEGETABLE_IMG3 from "../assets/images/vegetable-item-3.png";
-import VEGETABLE_IMG4 from "../assets/images/vegetable-item-4.jpg";
-import VEGETABLE_IMG5 from "../assets/images/vegetable-item-5.jpg";
-import VEGETABLE_IMG6 from "../assets/images/vegetable-item-6.jpg";
+
 
 const vegetableData = [
   {

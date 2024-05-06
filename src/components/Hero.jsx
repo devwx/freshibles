@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import HERO_IMG1 from "../assets/images/hero-img-1.png";
 import HERO_IMG2 from "../assets/images/hero-img-2.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
 
   return (
     <div className="container-fluid py-5 mb-5 hero-header">
@@ -15,10 +17,11 @@ const Hero = () => {
             <div className="position-relative mx-auto">
               <input
                 className="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-                type="number"
+                type="text"
                 placeholder="Search"
               />
               <button
+                onClick={() => navigate("/shop")}
                 type="submit"
                 className="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
                 style={{ top: 0, right: "25%" }}

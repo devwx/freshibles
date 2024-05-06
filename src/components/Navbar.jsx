@@ -1,4 +1,16 @@
+import { Link, useLocation } from "react-router-dom";
+import useCartItems from "../hooks/useFetchCartItems";
+
 function Navbar() {
+  const { cartItems } = useCartItems();
+
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  console.log(pathname);
+
+  const user = JSON.parse(localStorage.getItem("user-data"));
+
   return (
     <div className="container-fluid fixed-top">
       <div className="container topbar bg-primary d-none d-lg-block">
@@ -39,29 +51,80 @@ function Navbar() {
             id="navbarCollapse"
           >
             <div className="navbar-nav mx-auto">
-              <a href="/" className="nav-item nav-link active">
+              <Link
+                to="/"
+                className={`nav-item nav-link ${
+                  pathname === "/" ? "active" : ""
+                }`}
+              >
                 Home
-              </a>
-              <a href="/about-us" className="nav-item nav-link">
+              </Link>
+              <Link
+                to="/about-us"
+                className={`nav-item nav-link ${
+                  pathname === "/about-us" ? "active" : ""
+                }`}
+              >
                 About Us
-              </a>
-              <a href="/shop" className="nav-item nav-link">
+              </Link>
+              <Link
+                to="/shop"
+                className={`nav-item nav-link ${
+                  pathname === "/shop" ? "active" : ""
+                }`}
+              >
                 Shop
-              </a>
-              <a href="/services" className="nav-item nav-link">
+              </Link>
+              <Link
+                to="/services"
+                className={`nav-item nav-link ${
+                  pathname === "/services" ? "active" : ""
+                }`}
+              >
                 Services
-              </a>
-              <a href="/contact-us" className="nav-item nav-link">
+              </Link>
+              <Link
+                to="/contact-us"
+                className={`nav-item nav-link ${
+                  pathname === "/contact-us" ? "active" : ""
+                }`}
+              >
                 Contact Us
-              </a>
+              </Link>
             </div>
             <div className="d-flex m-3 me-0">
-              <a href="cart" className="position-relative me-4 my-auto">
-                <i className="fa fa-shopping-cart fa-2x"></i>
-              </a>
-              <a href="/register" className="my-auto">
-                <i className="fas fa-user fa-2x"></i>
-              </a>
+              <div style={{ position: "relative" }}>
+                <a href="cart" className="position-relative me-4 my-auto">
+                  <i className="fa fa-shopping-cart fa-2x"></i>
+                </a>
+                <span
+                  className="bg-danger text-white px-1 rounded-circle"
+                  style={{ position: "absolute", left: "20px", top: "-5px" }}
+                >
+                  {cartItems?.cartItems?.length || 0}
+                </span>
+              </div>
+              <div>
+                {user ? (
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("auth-token");
+                      localStorage.removeItem("user-data");
+                      window.location.replace("/");
+                    }}
+                    className="btn btn-danger my-auto"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <a href="/register" className="my-auto">
+                    <i className="fas fa-user fa-2x"></i>
+                  </a>
+                )}
+              </div>
+              <div className="ml-5">
+                {user && `👋 Welcome, ${user?.user.name}`}
+              </div>
             </div>
           </div>
         </nav>
